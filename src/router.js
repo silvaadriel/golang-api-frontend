@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Clients from './views/Clients.vue';
+import AddClient from './views/AddClient.vue';
 
 Vue.use(Router);
 
@@ -16,6 +17,11 @@ export default new Router({
       path: '/clients',
       name: 'clients',
       component: Clients,
+    },
+    {
+      path: '/add-client',
+      name: 'add-client',
+      component: AddClient,
     },
   ],
 });
