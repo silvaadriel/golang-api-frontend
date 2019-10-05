@@ -47,8 +47,9 @@ export default {
       clients: [],
     };
   },
-  mounted() {
-    api.get('/client/').then(response => this.clients = response.data);
+  async mounted() {
+    const response = await api.get('/client/');
+    this.clients = response.data;
   },
 };
 </script>
