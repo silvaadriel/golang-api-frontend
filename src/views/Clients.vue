@@ -21,7 +21,7 @@
                 <td>{{ client.email }}</td>
                 <td>{{ client.birthDate }}</td>
                 <td>
-                  <v-btn text icon color="green">
+                  <v-btn :to="`edit-client/${client.id}`" text icon color="green">
                     <v-icon>mdi-pen</v-icon>
                   </v-btn>
                   <v-btn text icon color="red">
