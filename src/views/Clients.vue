@@ -39,17 +39,17 @@
 </template>
 
 <script>
-import api from "../services/api";
+import api from '../services/api';
 
 export default {
   data() {
     return {
-      clients: []
+      clients: [],
     };
   },
   mounted() {
-    api.get("/client/").then(response => (this.clients = response.data));
-  }
+    api.get('/client/').then(response => this.clients = response.data);
+  },
 };
 </script>
 
