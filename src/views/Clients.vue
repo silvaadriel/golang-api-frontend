@@ -24,7 +24,7 @@
                   <v-btn :to="`edit-client/${client.id}`" text icon color="green">
                     <v-icon>mdi-pen</v-icon>
                   </v-btn>
-                  <v-btn text icon color="red">
+                  <v-btn @click="() => openDeleteClientDialog(client.id)" text icon color="red">
                     <v-icon>mdi-delete</v-icon>
                   </v-btn>
                 </td>
@@ -32,6 +32,17 @@
             </tbody>
           </template>
         </v-simple-table>
+        <v-dialog v-model="dialog" persistent max-width="400">
+          <v-card>
+            <v-card-title class="headline">This action cannot be reversed.</v-card-title>
+            <v-card-text>Are you sure you want to delete this client?</v-card-text>
+            <v-card-actions>
+              <div class="flex-grow-1"></div>
+              <v-btn color="green darken-1" text @click="deleteClient">Yes</v-btn>
+              <v-btn color="red darken-1" text @click="dialog = false">No</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
         <v-btn to="/add-client" color="primary">ADD CLIENT</v-btn>
       </v-col>
     </v-row>
@@ -45,12 +56,26 @@ export default {
   data() {
     return {
       clients: [],
+      clientId: null,
+      dialog: false,
     };
   },
   async mounted() {
     const response = await api.get('/client/');
     this.clients = response.data;
   },
+  methods: {
+    openDeleteClientDialog(clientId) {
+      this.clientId = clientId;
+      this.dialog = true;
+    },
+    async deleteClient() {
+      await api.delete(`/client/${this.clientId}`);
+      this.clients = this.clients.filter((client) => client.id != this.clientId);
+      this.clientId = null;
+      this.dialog = false;
+    }
+  }
 };
 </script>
 
