@@ -70,15 +70,15 @@ export default {
     },
     async deleteClient() {
       await api.delete(`/client/${this.clientId}`);
-      this.clients = this.clients.filter((client) => client.id != this.clientId);
+      this.clients = this.clients.filter(client => client.id !== this.clientId);
       this.clientId = null;
       this.dialog = false;
     },
     async fetchClients() {
       const response = await api.get('/client/');
       this.clients = response.data;
-    }
-  }
+    },
+  },
 };
 </script>
 

@@ -99,15 +99,18 @@ export default {
     clearInputs() {
       this.$refs.form.reset();
     },
-  },
-  async mounted() {
-    const { id } = this.$route.params;
+    async fetchClient() {
+      const { id } = this.$route.params;
 
-    const response = await api.get(`/client/${id}`);
-    this.name = response.data.name;
-    this.lastName = response.data.lastName;
-    this.email = response.data.email;
-    this.date = response.data.birthDate.substring(0, 10);
+      const response = await api.get(`/client/${id}`);
+      this.name = response.data.name;
+      this.lastName = response.data.lastName;
+      this.email = response.data.email;
+      this.date = response.data.birthDate.substring(0, 10);
+    },
+  },
+  mounted() {
+    this.fetchClient();
   },
 };
 </script>
