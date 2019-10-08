@@ -19,7 +19,7 @@
                 <td>{{ client.name }}</td>
                 <td>{{ client.lastName }}</td>
                 <td>{{ client.email }}</td>
-                <td>{{ client.birthDate }}</td>
+                <td>{{ client.birthDate.substr(0, 10) }}</td>
                 <td>
                   <v-btn :to="`edit-client/${client.id}`" text icon color="green">
                     <v-icon>mdi-pen</v-icon>
