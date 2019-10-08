@@ -60,9 +60,8 @@ export default {
       dialog: false,
     };
   },
-  async mounted() {
-    const response = await api.get('/client/');
-    this.clients = response.data;
+  mounted() {
+    this.fetchClients();
   },
   methods: {
     openDeleteClientDialog(clientId) {
@@ -74,6 +73,10 @@ export default {
       this.clients = this.clients.filter((client) => client.id != this.clientId);
       this.clientId = null;
       this.dialog = false;
+    },
+    async fetchClients() {
+      const response = await api.get('/client/');
+      this.clients = response.data;
     }
   }
 };
