@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import api from '../AxiosHttpClient';
+import api from '../../AxiosHttpClient';
 
 export default {
   data() {
