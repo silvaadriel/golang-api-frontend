@@ -51,7 +51,7 @@
           <v-btn class="mr-4 red lighten-1 white--text" @click="clearInputs"
             >Clear</v-btn
           >
-          <v-btn class="secondary" to="clients">Clients List</v-btn>
+          <v-btn class="secondary" to="/">Clients List</v-btn>
         </v-form>
       </v-col>
     </v-row>
@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import api from '../AxiosHttpClient';
+import api from '../../AxiosHttpClient';
 
 export default {
   data: () => ({
@@ -89,7 +89,7 @@ export default {
           email: this.email,
           birthDate: this.date,
         });
-      this.$router.push('clients');
+      this.$router.push('/');
     },
     save(date) {
       this.$refs.menu.save(date);
