@@ -1,4 +1,4 @@
-# golang-api-frontend
+# Golang api frontend
 
 ## Project setup
 ```
